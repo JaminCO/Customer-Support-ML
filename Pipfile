@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+sqlalchemy = "*"
+python-dotenv = "*"
+asyncpg = "*"
+psycopg2-binary = "*"
+alembic = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+pydantic = "*"
+datasets = "*"
+torch = "*"
+pytest = "*"
+httpx = "*"
+redis = "*"
+celery = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"

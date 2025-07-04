@@ -1,0 +1,7 @@
+
+----- ERROR LOG -----
+Timestamp : 2025-07-03 23:44:26 UTC
+Error Code: 500
+Context   : my_function
+Message   : Internal Server Error
+----------------------
