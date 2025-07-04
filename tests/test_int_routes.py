@@ -60,4 +60,4 @@ def test_stats_route():
     assert response.status_code == 200
     if response.status_code == 200:
         stats = response.json()
-        assert isinstance(stats, dict)
+        assert isinstance(stats, list)
