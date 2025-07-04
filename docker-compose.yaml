@@ -1,0 +1,59 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: support_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  csml_redis:
+    container_name: csml_redis
+    hostname: redis
+    image: redis:latest
+    command: --port 6379
+    ports:
+        - "6379:6379"
+    expose:
+        - "6379"
+    restart: always
+
+  csml_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: csml_worker
+    command: celery -A app.routes.ticket.celery_app worker --pool=threads --loglevel=info
+    volumes:
+      - .:/code
+    depends_on:
+      - csml_redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/1
+      
+  csml_api:
+    container_name: csml_api
+    build:
+        context: ./
+        dockerfile: ./Dockerfile
+    ports:
+    - "8000:8000"
+    env_file:
+    - .env
+    working_dir: /code
+    volumes:
+        - ./:/code
+    links:
+        - csml_redis
+        - csml_worker
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+
+volumes:
+  postgres_data:
