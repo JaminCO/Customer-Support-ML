@@ -166,7 +166,7 @@ pytest
 ## 🤖 AI Assistant Usage
 
 - Used GitHub Copilot for code suggestions, boilerplate, and test scaffolding.
-- All logic, architecture, and integration decisions were made independently.
+- Debugging and Code Enhancement.
 - ChatGPT used for structuring and best practices
 
 

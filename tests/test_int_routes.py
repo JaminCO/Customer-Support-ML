@@ -57,7 +57,7 @@ def test_list_tickets_by_category():
 
 def test_stats_route():
     response = client.get("/stats")
-    assert response.status_code in (200, 404)  # 404 if not implemented
+    assert response.status_code in (200)  # 404 if not implemented
     if response.status_code == 200:
         stats = response.json()
         assert isinstance(stats, dict)
