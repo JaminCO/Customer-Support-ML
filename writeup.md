@@ -1,10 +1,4 @@
-
-# 🧠 Levels AI Assessment
-
-## AI-Powered Support Ticket Backend
-
-**Candidate:** _Jamin Onuegbu_  
-
+# AI-Powered Support Ticket Backend
 ---
 
 ## 🚀 Project Overview
@@ -179,3 +173,4 @@ pytest
 - Set `PYTHONPATH` to project root if import errors occur during testing.
 
 ---
+
